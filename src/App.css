@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  padding-bottom: 100px;
+}
+
+:root {
+  --main-color: #4bd768;
+  --header-color: rgba(0, 0, 0, 0.671);
+  --text-color: rgba(0, 0, 0, 0.322);
+}
+
+.main-container {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 40px;
+  }
+
+  .main-container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
