@@ -1,40 +1,27 @@
 {
-  "name": "multiple-charities",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.9.2",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.42",
-    "@moneybutton/react-money-button": "^0.32.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "firebase": "^7.8.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.1"
-  },
+  "name": "multi-charities",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm install && npm run build"
+    "client:init": "cd client && npm i",
+    "client:build": "cd client && npm run build",
+    "client": "cd client && npm run start",
+    "start": "NODE_ENV=production node server/app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/we-super-star/multi-charities.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/we-super-star/multi-charities/issues"
+  },
+  "homepage": "https://github.com/we-super-star/multi-charities#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1"
   }
 }
