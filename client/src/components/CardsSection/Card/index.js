@@ -57,10 +57,14 @@ class Card extends Component {
         </article>
         <span className="card__money-btn">
           <MoneyButton
-            to="<your-bitcoin-address-here>"
-            amount=".1"
-            currency="USD"
-            label="Money Button"
+            data-to="1K3Swx1xa2jNRgKPjnoTMh4syX5MkKtEiz"
+            data-amount=".10"
+            data-currency="USD"
+            data-label="Donate"
+            data-client-identifier="1d198ec45d2ed6af10b6b03f56fa6504"
+            data-button-id="1581112168167"
+            data-button-data="{}"
+            data-type="buy"
           />
         </span>
 
