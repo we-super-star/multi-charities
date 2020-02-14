@@ -35,7 +35,7 @@ class Home extends Component {
             <section className="main-container main-content">
               <div className="main-content__main-img">
                 <h2 className="main-content__main-img-head">
-                  Donate directly to all of your favorite
+                  Donate directly to all of your favorite &nbsp;
                   <br className="desktop-break-line" />
                   charities at the click of a<a>button.</a>
                 </h2>
