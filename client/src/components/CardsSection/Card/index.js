@@ -141,7 +141,8 @@ class SimplePopover extends Component {
             <CardMaterial>
               <Typography>
                 <section className="card-container__popup">
-                  {allData &&
+                  {!clickButton &&
+                    allData &&
                     allData.map((ele, index) => {
                       if (ele.id in checkTheSelected()) {
                         return (
@@ -165,9 +166,11 @@ class SimplePopover extends Component {
               </div> 
               <p>Your Charity Button is ready!</p>
               */}
-                  <p className="card-container__number-charities">
-                    {objLength()} Charitied Selected
-                  </p>
+                  {!clickButton && (
+                    <p className="card-container__number-charities">
+                      {objLength()} Charitied Selected
+                    </p>
+                  )}
                   {clickButton && <p>We are working with this!</p>}
                 </section>
               </Typography>
