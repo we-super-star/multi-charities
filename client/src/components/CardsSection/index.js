@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 
 import SearchIcon from "@material-ui/icons/Search";
-import { InputBase } from "@material-ui/core";
+import { InputBase, Button } from "@material-ui/core";
 
 import Card from "./Card";
-import PrimeryButton from "./PrimeryButton";
 import "./cardsSection.css";
+import "./PrimeryButton/button.css";
 import { withFirebase } from "../../containers/Firebase";
 
 class CardSection extends Component {
   state = {
     searchValue: [],
     rerender: true,
-    allData: []
+    allData: [],
+    click: false
   };
 
   componentDidMount() {
@@ -42,6 +43,11 @@ class CardSection extends Component {
     this.setState({ rerender: true });
   };
 
+  handleClick = () => {
+    this.setState({
+      click: true
+    });
+  };
   render() {
     const {
       state: { searchValue, allData }
@@ -77,11 +83,16 @@ class CardSection extends Component {
                 id={ele.id}
                 key={index}
                 addToBtn={this.addToBtn}
+                allData={allData}
+                clickButton={this.state.click}
               />
             )
         )}
+        <div className="card-container__button">
+          <Button onClick={this.handleClick}>Create a Charity Button..</Button>
+        </div>
 
-        <PrimeryButton addToBtn={this.addToBtn} allData={allData} />
+        {/* <PrimeryButton addToBtn={this.addToBtn} allData={allData} /> */}
       </div>
     );
   }

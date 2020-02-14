@@ -86,4 +86,10 @@
   .card:nth-child(5) {
     border: 0 !important;
   }
+
+  .card-container__popup {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
 }

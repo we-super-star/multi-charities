@@ -14,7 +14,7 @@ class Card extends Component {
 
   render() {
     const {
-      props: { head, icon, text, id, addToBtn }
+      props: { head, icon, text }
     } = this;
 
     return (
