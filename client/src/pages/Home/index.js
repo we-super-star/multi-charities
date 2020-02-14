@@ -37,7 +37,7 @@ class Home extends Component {
                 <h2 className="main-content__main-img-head">
                   Donate directly to all of your favorite&nbsp;
                   <br className="desktop-break-line" />
-                  charities at the click of a<a>button.</a>
+                  charities at the click of a <a>button.</a>
                 </h2>
 
                 <img src={mainImg} alt="" />

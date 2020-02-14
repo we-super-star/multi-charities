@@ -18,7 +18,7 @@
 
 .main-content__main-img-head a {
   color: var(--main-color);
-  display: block;
+  display: inline;
   cursor: pointer;
 }
 
