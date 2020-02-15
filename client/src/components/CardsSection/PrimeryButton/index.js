@@ -6,15 +6,30 @@ import { withFirebase } from "../../../containers/Firebase";
 import "./button.css";
 import CardMaterial from "@material-ui/core/Card";
 
-function SimplePopover({ selected, addToBtn, allData }) {
+function SimplePopover({ addToBtn }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = event => {
+  const handleClick = async event => {
     setAnchorEl(event.currentTarget);
+    await removeAllItems();
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const removeAllItems = async () => {
+    const clickedObj = await JSON.parse(localStorage.getItem("clickedObj"));
+    const selected = await JSON.parse(localStorage.getItem("selected"));
+    for (var key in clickedObj) {
+      if (clickedObj.hasOwnProperty(key)) {
+        clickedObj[key] = "unClicked";
+        delete selected[key];
+      }
+    }
+    await localStorage.setItem("selected", JSON.stringify(selected));
+    await localStorage.setItem("clickedObj", JSON.stringify(clickedObj));
+    await addToBtn();
   };
 
   const open = Boolean(anchorEl);

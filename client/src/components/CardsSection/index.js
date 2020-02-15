@@ -46,7 +46,6 @@ class CardSection extends Component {
   };
 
   handleClick = event => {
-    console.log(event.currentTarget);
     this.setState({
       openSnackBar: true
     });
@@ -97,7 +96,10 @@ class CardSection extends Component {
               />
             )
         )}
-        <PrimeryButton />
+        <PrimeryButton
+          addToBtn={this.addToBtn}
+          handleClick={this.handleClick}
+        />
       </div>
     );
   }

@@ -40,7 +40,6 @@ class Card extends Component {
       const selected = await JSON.parse(localStorage.getItem("selected"));
       selected[id] = id;
       await localStorage.setItem("selected", JSON.stringify(selected));
-      await console.log(this.state);
       this.handleOpenPopup();
       await addToBtn();
     };
@@ -133,8 +132,6 @@ class SimplePopover extends Component {
     // console.log(`Did mount ${JSON.stringify(this.state)} `);
   }
   componentDidUpdate(previousProps, previousState) {
-    console.log(`Previous Props ${JSON.stringify(previousProps.open)}`);
-    console.log(`Current Props ${JSON.stringify(this.props.open)}`);
     if (previousProps.openSnackBar !== this.props.openSnackBar) {
       if (this.props.open === true && this.props.openSnackBar === true) {
         this.handleClose();
