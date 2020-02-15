@@ -7,6 +7,7 @@ import CardMaterial from "@material-ui/core/Card";
 import Card from "./Card";
 import "./cardsSection.css";
 import "./PrimeryButton/button.css";
+import PrimeryButton from "./PrimeryButton";
 import { withFirebase } from "../../containers/Firebase";
 
 class CardSection extends Component {
@@ -96,20 +97,7 @@ class CardSection extends Component {
               />
             )
         )}
-        <div className="card-container__button">
-          <Button onClick={this.handleClick}>Create a Charity Button..</Button>
-          <Snackbar
-            open={this.state.openSnackBar}
-            autoHideDuration={6000}
-            onClose={this.handleClose}
-          >
-            <CardMaterial className="card-container__popup">
-              <Typography>We are working with this!</Typography>
-            </CardMaterial>
-          </Snackbar>
-        </div>
-
-        {/* <PrimeryButton addToBtn={this.addToBtn} allData={allData} /> */}
+        <PrimeryButton />
       </div>
     );
   }
