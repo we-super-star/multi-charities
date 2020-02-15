@@ -19,6 +19,17 @@ class Card extends Component {
     clickedObj[this.props.id] === "clicked" && this.setState({ clicked: true });
   }
 
+  componentDidUpdate(previousProps) {
+    if (
+      previousProps.openSnackBar !== this.props.openSnackBar &&
+      this.props.openSnackBar
+    ) {
+      this.setState({
+        clicked: false
+      });
+    }
+  }
+
   handleOpenPopup() {
     this.setState({
       openPopup: true
@@ -94,7 +105,7 @@ class Card extends Component {
           allData={allData}
           anchorEl={anchorEl}
           addToBtn={addToBtn}
-          openSnackBar={openSnackBar}
+          // openSnackBar={openSnackBar}
         />
       </section>
     );
@@ -129,14 +140,9 @@ class SimplePopover extends Component {
     this.setState({
       openPopup: this.props.open
     });
-    // console.log(`Did mount ${JSON.stringify(this.state)} `);
+    console.log(`Did mount ${JSON.stringify(this.state)} `);
   }
   componentDidUpdate(previousProps, previousState) {
-    if (previousProps.openSnackBar !== this.props.openSnackBar) {
-      if (this.props.open === true && this.props.openSnackBar === true) {
-        this.handleClose();
-      }
-    }
     if (previousProps.open !== this.props.open) {
       this.setState({
         openPopup: this.props.open

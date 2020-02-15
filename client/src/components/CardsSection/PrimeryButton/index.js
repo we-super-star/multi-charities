@@ -6,16 +6,18 @@ import { withFirebase } from "../../../containers/Firebase";
 import "./button.css";
 import CardMaterial from "@material-ui/core/Card";
 
-function SimplePopover({ addToBtn }) {
+function SimplePopover({ addToBtn, handleClickPrimery, handleClosePrimery }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = async event => {
     setAnchorEl(event.currentTarget);
     await removeAllItems();
+    await handleClickPrimery();
   };
 
-  const handleClose = () => {
+  const handleClose = async () => {
     setAnchorEl(null);
+    await handleClosePrimery();
   };
 
   const removeAllItems = async () => {

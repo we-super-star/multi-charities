@@ -45,13 +45,13 @@ class CardSection extends Component {
     this.setState({ rerender: true });
   };
 
-  handleClick = event => {
+  handleClick = async () => {
     this.setState({
       openSnackBar: true
     });
   };
 
-  handleClose = () => {
+  handleClose = async () => {
     this.setState({
       openSnackBar: false
     });
@@ -98,7 +98,8 @@ class CardSection extends Component {
         )}
         <PrimeryButton
           addToBtn={this.addToBtn}
-          handleClick={this.handleClick}
+          handleClickPrimery={this.handleClick}
+          handleClosePrimery={this.handleClose}
         />
       </div>
     );
