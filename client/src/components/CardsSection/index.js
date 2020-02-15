@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import SearchIcon from "@material-ui/icons/Search";
-import { InputBase, Button } from "@material-ui/core";
+import { InputBase, Button, Snackbar, Typography } from "@material-ui/core";
+import CardMaterial from "@material-ui/core/Card";
 
 import Card from "./Card";
 import "./cardsSection.css";
@@ -13,7 +14,7 @@ class CardSection extends Component {
     searchValue: [],
     rerender: true,
     allData: [],
-    click: false
+    openSnackBar: false
   };
 
   componentDidMount() {
@@ -43,9 +44,16 @@ class CardSection extends Component {
     this.setState({ rerender: true });
   };
 
-  handleClick = () => {
+  handleClick = event => {
+    console.log(event.currentTarget);
     this.setState({
-      click: true
+      openSnackBar: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      openSnackBar: false
     });
   };
   render() {
@@ -84,12 +92,21 @@ class CardSection extends Component {
                 key={index}
                 addToBtn={this.addToBtn}
                 allData={allData}
-                clickButton={this.state.click}
+                openSnackBar={this.state.openSnackBar}
               />
             )
         )}
         <div className="card-container__button">
           <Button onClick={this.handleClick}>Create a Charity Button..</Button>
+          <Snackbar
+            open={this.state.openSnackBar}
+            autoHideDuration={6000}
+            onClose={this.handleClose}
+          >
+            <CardMaterial className="card-container__popup">
+              <Typography>We are working with this!</Typography>
+            </CardMaterial>
+          </Snackbar>
         </div>
 
         {/* <PrimeryButton addToBtn={this.addToBtn} allData={allData} /> */}

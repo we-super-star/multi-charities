@@ -27,7 +27,7 @@ class Card extends Component {
 
   render() {
     const {
-      props: { head, icon, text, id, addToBtn, allData, clickButton, popup },
+      props: { head, icon, text, id, addToBtn, allData, popup, openSnackBar },
       state: { clicked, openPopup, anchorEl }
     } = this;
 
@@ -95,7 +95,7 @@ class Card extends Component {
           allData={allData}
           anchorEl={anchorEl}
           addToBtn={addToBtn}
-          clickButton={clickButton}
+          openSnackBar={openSnackBar}
         />
       </section>
     );
@@ -113,36 +113,50 @@ const objLength = () => {
   for (key in checkTheSelected()) {
     checkTheSelected().hasOwnProperty(key) && size++;
   }
-  console.log(size);
   return size;
 };
 
 class SimplePopover extends Component {
-  // const open = Boolean(anchorEl);
-  // const id = open ? "simple-popover" : undefined;
-
+  state = {
+    openPopup: false
+  };
   handleClose = () => {
-    console.log("DCM");
     this.setState({
       openPopup: false
     });
   };
 
-  handleClick = () => {};
-
+  componentDidMount() {
+    this.setState({
+      openPopup: this.props.open
+    });
+    // console.log(`Did mount ${JSON.stringify(this.state)} `);
+  }
+  componentDidUpdate(previousProps, previousState) {
+    console.log(`Previous Props ${JSON.stringify(previousProps.open)}`);
+    console.log(`Current Props ${JSON.stringify(this.props.open)}`);
+    if (previousProps.openSnackBar !== this.props.openSnackBar) {
+      if (this.props.open === true && this.props.openSnackBar === true) {
+        this.handleClose();
+      }
+    }
+    if (previousProps.open !== this.props.open) {
+      this.setState({
+        openPopup: this.props.open
+      });
+    }
+  }
   render() {
-    const { allData, open, addToBtn, clickButton } = this.props;
+    const { allData, addToBtn } = this.props;
+    // console.log(`Render ${JSON.stringify(this.state)}`);
     if (objLength() !== 0) {
       return (
         <div className="card-container__simplePopup">
-          {console.log("selected", checkTheSelected())}
-          {console.log(clickButton)}
-          <Grow in={open}>
+          <Grow in={this.state.openPopup}>
             <CardMaterial>
               <Typography>
                 <section className="card-container__popup">
-                  {!clickButton &&
-                    allData &&
+                  {allData &&
                     allData.map((ele, index) => {
                       if (ele.id in checkTheSelected()) {
                         return (
@@ -166,12 +180,11 @@ class SimplePopover extends Component {
               </div> 
               <p>Your Charity Button is ready!</p>
               */}
-                  {!clickButton && (
+                  {
                     <p className="card-container__number-charities">
                       {objLength()} Charitied Selected
                     </p>
-                  )}
-                  {clickButton && <p>We are working with this!</p>}
+                  }
                 </section>
               </Typography>
             </CardMaterial>
