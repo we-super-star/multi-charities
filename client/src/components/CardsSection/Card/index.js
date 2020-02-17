@@ -6,6 +6,7 @@ import "./card.css";
 import Typography from "@material-ui/core/Typography";
 import CardMaterial from "@material-ui/core/Card";
 import Grow from "@material-ui/core/Grow";
+import htmlParse from "html-react-parser";
 
 class Card extends Component {
   state = {
@@ -38,7 +39,7 @@ class Card extends Component {
 
   render() {
     const {
-      props: { head, icon, text, id, addToBtn, allData, popup, openSnackBar },
+      props: { head, icon, text, code, id, addToBtn, allData, popup, openSnackBar },
       state: { clicked, openPopup, anchorEl }
     } = this;
 
@@ -68,6 +69,27 @@ class Card extends Component {
       await addToBtn();
     };
 
+    const ele = htmlParse(code);
+
+    var mb = {};
+    if(ele.props == undefined)
+    {
+      mb['data-to']= "1K3Swx1xa2jNRgKPjnoTMh4syX5MkKtEiz";
+      mb['data-amount'] = ".10";
+      mb['data-currency']= "USD";
+      mb['data-label']= "Default";
+      mb['data-client-identifier']= "1d198ec45d2ed6af10b6b03f56fa6504";
+      mb['data-button-id']= "1581112168167";
+      mb['data-button-data']= "{}";
+      mb['data-type']= "buy";
+    }
+    else
+    {
+      mb = ele.props;
+    }
+
+
+
     return (
       <section className="card">
         <div className="card__img">
@@ -80,10 +102,14 @@ class Card extends Component {
         {!popup && (
           <span className="card__money-btn">
             <MoneyButton
-              to="<your-bitcoin-address-here>"
-              amount=".1"
-              currency="USD"
-              label="Money Button"
+              to={mb['data-to']}
+              amount= {mb['data-amount']}
+              currency= {mb['data-currency']}
+              label={mb['data-label']}
+              clientIdentifier={mb['data-client-identifier']}
+              buttonId={mb['data-button-id']}
+              buttonData={mb['data-button-data']}
+              type={mb['data-type']}
             />
           </span>
         )}
@@ -168,6 +194,7 @@ class SimplePopover extends Component {
                             head={ele.head}
                             id={ele.id}
                             key={index}
+                            code={ele.code}
                             addToBtn={addToBtn}
                             popup={true}
                           />

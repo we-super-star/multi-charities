@@ -88,6 +88,7 @@ class CardSection extends Component {
                 icon={ele.icon}
                 head={ele.head}
                 text={ele.text}
+                code={ele.code}
                 id={ele.id}
                 key={index}
                 addToBtn={this.addToBtn}
