@@ -74,14 +74,14 @@ class Card extends Component {
     var mb = {};
     if(ele.props == undefined)
     {
-//      mb['data-to']= "1K3Swx1xa2jNRgKPjnoTMh4syX5MkKtEiz";
-//     mb['data-amount'] = ".10";
-//      mb['data-currency']= "USD";
-//      mb['data-label']= "Default";
-//      mb['data-client-identifier']= "1d198ec45d2ed6af10b6b03f56fa6504";
-//      mb['data-button-id']= "1581112168167";
-//      mb['data-button-data']= "{}";
-//      mb['data-type']= "buy";
+      mb['data-to']= "1K3Swx1xa2jNRgKPjnoTMh4syX5MkKtEiz";
+      mb['data-amount'] = ".10";
+      mb['data-currency']= "USD";
+      mb['data-label']= "Default";
+      mb['data-client-identifier']= "1d198ec45d2ed6af10b6b03f56fa6504";
+      mb['data-button-id']= "1581112168167";
+      mb['data-button-data']= "{}";
+      mb['data-type']= "buy";
     }
     else
     {
